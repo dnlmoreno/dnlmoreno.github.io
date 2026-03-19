@@ -19,10 +19,10 @@ const getBadgeClass = (venue: string) => {
     <div class="research-header fade-in">
       <h2 class="section-title">Research & <span class="text-accent">Publications</span></h2>
       <div class="mock-filters">
-        <button class="filter-btn active">All</button>
-        <button class="filter-btn">Transformers</button>
-        <button class="filter-btn">Time Series</button>
-        <button class="filter-btn">Astrophysics</button>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="transformers">Transformers</button>
+        <button class="filter-btn" data-filter="time series">Time Series</button>
+        <button class="filter-btn" data-filter="astrophysics">Astrophysics</button>
       </div>
     </div>
     
@@ -32,7 +32,7 @@ const getBadgeClass = (venue: string) => {
       
       <div class="papers-grid">
         {papersBloqueA.map(paper => (
-          <article class="paper-card glass">
+          <article class="paper-card glass" data-keywords={[...paper.data, ...paper.frameworks].join(' ').toLowerCase()}>
             <div class="paper-image-wrapper">
               <img src={paper.image.replace("3b82f6", "00e5ff")} alt={paper.title} class="paper-image" loading="lazy" />
               
@@ -87,7 +87,7 @@ const getBadgeClass = (venue: string) => {
       
       <div class="contributions-list">
         {contributionsBloqueB.map(contrib => (
-          <div class="contribution-item glass">
+          <div class="contribution-item glass" data-keywords={contrib.frameworks.join(' ').toLowerCase()}>
             <span class={`venue-badge ${getBadgeClass(contrib.venue)}`}>{contrib.venue}</span>
             <h4 class="contrib-title" title={contrib.title}>{contrib.title}</h4>
             <div class="paper-chips inline">
@@ -493,3 +493,49 @@ const getBadgeClass = (venue: string) => {
     }
   }
 </style>
+
+<script>
+  // --- Research keyword filter logic ---
+  const initFilter = () => {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const paperCards = document.querySelectorAll<HTMLElement>('.paper-card');
+    const contribItems = document.querySelectorAll<HTMLElement>('.contribution-item');
+
+    // Map filter button label -> keywords to match against data-keywords
+    const KEYWORD_MAP: Record<string, string[]> = {
+      'all': [],
+      'transformers': ['transformers', 'vit', 'astromer', 'atat', 'transformer'],
+      'time series': ['time series', 'light curves', 'irregular time series', 'alert streams'],
+      'astrophysics': ['time series', 'multi-band', 'light curves', 'irregular time series', 'alert streams', 'simulated data', 'astromer', 'atat'],
+    };
+
+    const filterItems = (items: NodeListOf<HTMLElement>, keywords: string[]) => {
+      items.forEach(item => {
+        const kw = (item.dataset.keywords || '').toLowerCase();
+        if (keywords.length === 0) {
+          item.style.display = '';
+          item.style.opacity = '1';
+        } else {
+          const matches = keywords.some(k => kw.includes(k));
+          item.style.display = matches ? '' : 'none';
+          item.style.opacity = matches ? '1' : '0';
+        }
+      });
+    };
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterKey = (btn.dataset.filter || 'all').toLowerCase();
+        const keywords = KEYWORD_MAP[filterKey] ?? [];
+
+        filterItems(paperCards, keywords);
+        filterItems(contribItems, keywords);
+      });
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initFilter);
+</script>
