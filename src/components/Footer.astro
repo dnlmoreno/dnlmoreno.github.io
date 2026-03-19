@@ -1,0 +1,97 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="#" class="logo">DM<span class="text-accent">.</span></a>
+        <p class="footer-tagline">Machine Learning Engineer & Researcher</p>
+      </div>
+      
+      <div class="footer-links">
+        <a href="#about" class="footer-link">About</a>
+        <a href="#research" class="footer-link">Research</a>
+        <a href="#tutorials" class="footer-link">Tutorials</a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {year} Daniel Moreno Cartagena. All rights reserved.</p>
+      <p class="built-with">
+        Built with Astro & Vanilla CSS
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem 0; /* Radically reduced padding */
+    background-color: var(--color-surface);
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Reduced from 3rem */
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-link {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    transition: color 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: var(--color-accent);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem; /* Reduced from 2rem */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .built-with {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+  }
+</style>

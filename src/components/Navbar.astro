@@ -1,0 +1,237 @@
+---
+// Get the current path to highlight active link
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Research', href: '/research' },
+  { name: 'Tutorials', href: '/tutorials' },
+  { name: 'News', href: '/news' },
+  { name: 'Contact', href: '/contact', isButton: true }
+];
+
+const isActive = (href) => {
+  if (href === '/') return currentPath === '/' || currentPath === '';
+  return currentPath.startsWith(href) && href !== '/';
+};
+---
+
+<header id="navbar" class="header glass fade-in">
+  <!-- Ensure content is exactly hugging the edges of standard container for perfect alignment with Hero text -->
+  <div class="container nav-content">
+    <a href="/" class="logo">DM<span class="text-accent">.</span></a>
+    
+    <nav class="desktop-nav">
+      <ul>
+        {links.map(link => (
+          <li>
+            <a href={link.href} class={`nav-link ${isActive(link.href) && !link.isButton ? 'active' : ''} ${link.isButton ? 'btn btn-primary nav-btn' : ''}`}>
+              {link.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    
+    <button class="mobile-menu-btn" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+  
+  <div class="mobile-nav">
+    <ul>
+      {links.map(link => (
+        <li>
+          <a href={link.href} class={`mobile-link ${isActive(link.href) && !link.isButton ? 'active' : ''} ${link.isButton ? 'text-accent' : ''}`}>
+            {link.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transition: all 0.3s ease;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid transparent;
+  }
+
+  .header.scrolled {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: var(--font-mono);
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .desktop-nav ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 5px;
+  }
+
+  /* The underline hover effect ONLY for non-buttons */
+  .nav-link:not(.nav-btn)::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:not(.nav-btn):hover::after,
+  .nav-link.active:not(.nav-btn)::after {
+    width: 100%;
+  }
+
+  .nav-link.active:not(.nav-btn) {
+    color: var(--color-accent);
+  }
+
+  .nav-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+  }
+
+  /* Mobile menu styles */
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    z-index: 101;
+    cursor: pointer;
+  }
+
+  .bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--color-text);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(10, 10, 10, 0.98);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 99;
+  }
+
+  .mobile-nav.is-open {
+    transform: translateY(0);
+  }
+
+  .mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mobile-link {
+    font-size: 1.5rem;
+    font-family: var(--font-mono);
+  }
+
+  .mobile-link.active {
+    color: var(--color-accent);
+  }
+  
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+    
+    .mobile-menu-btn.is-active .bar:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+      background-color: var(--color-accent);
+    }
+    
+    .mobile-menu-btn.is-active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-btn.is-active .bar:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+      background-color: var(--color-accent);
+    }
+  }
+</style>
+
+<script>
+  // Handlers for Navbar interactions
+  const initNavbar = () => {
+    const header = document.getElementById('navbar');
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    // Scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header?.classList.add('scrolled');
+      } else {
+        header?.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    mobileBtn?.addEventListener('click', () => {
+      mobileBtn.classList.toggle('is-active');
+      mobileNav?.classList.toggle('is-open');
+      document.body.style.overflow = mobileNav?.classList.contains('is-open') ? 'hidden' : '';
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initNavbar);
+</script>
