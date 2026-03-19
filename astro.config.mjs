@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://danielmoreno.github.io', // Placeholder URL for GitHub Pages
+  site: 'https://dnlmoreno.github.io', // Corrected site URL for GitHub Pages
   base: '/', // Change to '/repo-name' if not a user/org page (danielmoreno.github.io)
   output: 'static',
   build: {
