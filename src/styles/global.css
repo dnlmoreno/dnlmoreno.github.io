@@ -30,11 +30,21 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 85%; /* Global scale: 100% zoom will look like 85% zoom on desktop */
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 100%; /* Reset to standard on mobile for better accessibility */
+  }
+}
+
 body {
   background-color: transparent;
   color: var(--color-text);
   font-family: var(--font-sans);
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
   overflow-x: hidden;
   scroll-behavior: smooth;

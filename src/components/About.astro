@@ -643,7 +643,7 @@
   }
 
   .narrative-panel p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.7;
     color: var(--color-text-muted);
   }
@@ -686,7 +686,7 @@
     background: rgba(0, 229, 255, 0.1);
     color: var(--color-accent);
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     padding: 0.3rem 0.8rem;
     border-bottom-left-radius: 10px;
     text-transform: uppercase;
@@ -717,7 +717,7 @@
 
   .teaching-institution {
     display: block;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     font-weight: 600;
     font-family: var(--font-mono);
     color: var(--color-accent);
@@ -734,13 +734,13 @@
   }
 
   .teaching-content h4 {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     color: var(--color-text);
     margin-bottom: 0.5rem;
   }
 
   .teaching-content p {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: var(--color-text-muted);
     line-height: 1.5;
   }
@@ -804,7 +804,7 @@
     margin: 0;
     padding: 1.5rem;
     font-family: var(--font-mono);
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     line-height: 1.6;
     overflow-x: auto;
   }
@@ -839,7 +839,7 @@
   .skills-inline-title {
     font-family: var(--font-mono);
     color: var(--color-accent);
-    font-size: 1.4rem;
+    font-size: 2.0rem;
     letter-spacing: 0.1em;
     margin-bottom: 2rem;
     text-align: center;
@@ -901,7 +901,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 0.4rem 0.8rem;
     border-radius: 5px;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-family: var(--font-mono);
     transition: all 0.3s ease;
   }
@@ -1010,7 +1010,7 @@
     padding: 1.5rem 1rem 1rem;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 1.0rem;
     display: flex;
     align-items: center;
     gap: 0.6rem;
@@ -1082,7 +1082,7 @@
 
   .interest-label {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     color: var(--color-text-muted);
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -1130,6 +1130,7 @@
     .bg-typography {
       font-size: 25vw;
       top: 100px;
+      opacity: 0.05; /* Fade more on mobile to avoid clashing with content */
     }
     .highlight-border {
       border-left: 3px solid var(--color-accent);
@@ -1153,7 +1154,8 @@
       transform: translateY(-5px) scale(1.02); /* Reduced movement on mobile */
     }
     .interests-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr); /* 2 cols is safer for text labels */
+      gap: 1rem;
     }
   }
 </style>

@@ -35,7 +35,7 @@ const getBadgeClass = (venue: string) => {
 
     <!-- Bloque A: First Author Papers -->
     <div class="research-block fade-in">
-      <h3 class="subsection-title">First Author Papers</h3>
+      <h3 class="subsection-title">First & Second Author Papers</h3>
 
       <div class="papers-grid">
         {
@@ -313,7 +313,7 @@ const getBadgeClass = (venue: string) => {
     padding: 0.5rem 1rem;
     border-radius: 50px;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.3s ease;
   }
@@ -383,7 +383,7 @@ const getBadgeClass = (venue: string) => {
   .status-badge {
     padding: 0.3rem 0.6rem;
     border-radius: 50px;
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     font-weight: bold;
     font-family: var(--font-mono);
     text-transform: uppercase;
@@ -425,7 +425,7 @@ const getBadgeClass = (venue: string) => {
 
   .venue-badge {
     align-self: flex-start;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     font-family: var(--font-mono);
@@ -452,9 +452,9 @@ const getBadgeClass = (venue: string) => {
   }
 
   .paper-desc {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--color-text-muted);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
     flex: 1;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -474,8 +474,8 @@ const getBadgeClass = (venue: string) => {
   }
 
   .chip {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.5rem;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
     border-radius: 4px;
     font-family: var(--font-mono);
   }
@@ -498,8 +498,8 @@ const getBadgeClass = (venue: string) => {
   }
 
   .btn-sm {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
     flex: 1;
   }
 
@@ -542,10 +542,10 @@ const getBadgeClass = (venue: string) => {
   .contribution-item {
     display: grid;
     /* Strict Column Alignment: Venue Badge -> Title -> Framework Chips -> Action Buttons */
-    grid-template-columns: 120px 1fr auto 100px;
-    gap: 2rem;
+    grid-template-columns: 140px 1fr auto 120px;
+    gap: 3rem;
     align-items: center;
-    padding: 1.2rem 1.5rem;
+    padding: 1.5rem 2rem;
     border-radius: 8px;
     border: var(--surface-border);
     transition:
@@ -617,6 +617,45 @@ const getBadgeClass = (venue: string) => {
     /* Hide chips on smaller screens inside block B */
     .contribution-item .paper-chips {
       display: none;
+    }
+  }
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2.2rem;
+    }
+
+    .papers-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 0 0.5rem;
+    }
+
+    .paper-content {
+      padding: 1.5rem;
+    }
+
+    .paper-desc {
+      -webkit-line-clamp: none; /* Allow full description on mobile */
+    }
+
+    .contribution-item {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .contribution-item .venue-badge {
+      justify-self: center;
+    }
+
+    .contrib-title {
+      white-space: normal;
+      font-size: 1.1rem;
+    }
+
+    .contrib-actions {
+      justify-content: center;
     }
   }
   @media (max-width: 600px) {
