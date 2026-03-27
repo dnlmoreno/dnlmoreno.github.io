@@ -1,6 +1,7 @@
 ---
 const year = new Date().getFullYear();
 ---
+
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
@@ -8,19 +9,17 @@ const year = new Date().getFullYear();
         <a href="#" class="logo">DM<span class="text-accent">.</span></a>
         <p class="footer-tagline">Machine Learning Engineer & Researcher</p>
       </div>
-      
+
       <div class="footer-links">
         <a href="#about" class="footer-link">About</a>
         <a href="#research" class="footer-link">Research</a>
         <a href="#tutorials" class="footer-link">Tutorials</a>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
       <p>&copy; {year} Daniel Moreno Cartagena. All rights reserved.</p>
-      <p class="built-with">
-        Built with Astro & Vanilla CSS
-      </p>
+      <p class="built-with">Built with Astro & Vanilla CSS</p>
     </div>
   </div>
 </footer>
@@ -40,13 +39,13 @@ const year = new Date().getFullYear();
   }
 
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 800;
     font-family: var(--font-mono);
   }
 
   .footer-tagline {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: var(--color-text-muted);
     margin-top: 0.5rem;
   }
@@ -57,7 +56,7 @@ const year = new Date().getFullYear();
   }
 
   .footer-link {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: var(--color-text-muted);
     transition: color 0.3s ease;
   }
@@ -72,7 +71,7 @@ const year = new Date().getFullYear();
     align-items: center;
     padding-top: 1.5rem; /* Reduced from 2rem */
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 0.85rem;
+    font-size: 1.0rem;
     color: var(--color-text-muted);
     font-family: var(--font-mono);
   }
@@ -87,7 +86,7 @@ const year = new Date().getFullYear();
       text-align: center;
       gap: 2rem;
     }
-    
+
     .footer-bottom {
       flex-direction: column;
       text-align: center;

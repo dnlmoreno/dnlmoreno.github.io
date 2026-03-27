@@ -3,18 +3,18 @@
 const currentPath = Astro.url.pathname;
 
 const links = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Research', href: '/research' },
-  { name: 'Services', href: '/services' },
-  { name: 'Tutorials', href: '/tutorials' },
-  { name: 'News', href: '/news' },
-  { name: 'Contact', href: '/contact', isButton: true }
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Research", href: "/research" },
+  { name: "Services", href: "/services" },
+  { name: "Tutorials", href: "/tutorials" },
+  { name: "News", href: "/news" },
+  { name: "Contact", href: "/contact", isButton: true },
 ];
 
 const isActive = (href) => {
-  if (href === '/') return currentPath === '/' || currentPath === '';
-  return currentPath.startsWith(href) && href !== '/';
+  if (href === "/") return currentPath === "/" || currentPath === "";
+  return currentPath.startsWith(href) && href !== "/";
 };
 ---
 
@@ -22,35 +22,45 @@ const isActive = (href) => {
   <!-- Ensure content is exactly hugging the edges of standard container for perfect alignment with Hero text -->
   <div class="container nav-content">
     <a href="/" class="logo">DM<span class="text-accent">.</span></a>
-    
+
     <nav class="desktop-nav">
       <ul>
-        {links.map(link => (
-          <li>
-            <a href={link.href} class={`nav-link ${isActive(link.href) && !link.isButton ? 'active' : ''} ${link.isButton ? 'btn btn-primary nav-btn' : ''}`}>
-              {link.name}
-            </a>
-          </li>
-        ))}
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={`nav-link ${isActive(link.href) && !link.isButton ? "active" : ""} ${link.isButton ? "btn btn-primary nav-btn" : ""}`}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
-    
+
     <button class="mobile-menu-btn" aria-label="Toggle menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
   </div>
-  
+
   <div class="mobile-nav">
     <ul>
-      {links.map(link => (
-        <li>
-          <a href={link.href} class={`mobile-link ${isActive(link.href) && !link.isButton ? 'active' : ''} ${link.isButton ? 'text-accent' : ''}`}>
-            {link.name}
-          </a>
-        </li>
-      ))}
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class={`mobile-link ${isActive(link.href) && !link.isButton ? "active" : ""} ${link.isButton ? "text-accent" : ""}`}
+            >
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </header>
@@ -79,7 +89,7 @@ const isActive = (href) => {
   }
 
   .logo {
-    font-size: 1.8rem;
+    font-size: 2.0rem;
     font-weight: 800;
     font-family: var(--font-mono);
   }
@@ -96,7 +106,7 @@ const isActive = (href) => {
   }
 
   .nav-link {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
     position: relative;
     padding-bottom: 5px;
@@ -104,7 +114,7 @@ const isActive = (href) => {
 
   /* The underline hover effect ONLY for non-buttons */
   .nav-link:not(.nav-btn)::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 0;
     height: 2px;
@@ -125,7 +135,7 @@ const isActive = (href) => {
 
   .nav-btn {
     padding: 0.5rem 1.2rem;
-    font-size: 0.9rem;
+    font-size: 1.0rem;
     border-radius: 4px;
     margin-left: 0.5rem;
   }
@@ -184,7 +194,7 @@ const isActive = (href) => {
   .mobile-link.active {
     color: var(--color-accent);
   }
-  
+
   @media (max-width: 768px) {
     .desktop-nav {
       display: none;
@@ -193,16 +203,16 @@ const isActive = (href) => {
     .mobile-menu-btn {
       display: flex;
     }
-    
+
     .mobile-menu-btn.is-active .bar:nth-child(1) {
       transform: translateY(9px) rotate(45deg);
       background-color: var(--color-accent);
     }
-    
+
     .mobile-menu-btn.is-active .bar:nth-child(2) {
       opacity: 0;
     }
-    
+
     .mobile-menu-btn.is-active .bar:nth-child(3) {
       transform: translateY(-9px) rotate(-45deg);
       background-color: var(--color-accent);
@@ -213,26 +223,28 @@ const isActive = (href) => {
 <script>
   // Handlers for Navbar interactions
   const initNavbar = () => {
-    const header = document.getElementById('navbar');
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const mobileNav = document.querySelector('.mobile-nav');
+    const header = document.getElementById("navbar");
+    const mobileBtn = document.querySelector(".mobile-menu-btn");
+    const mobileNav = document.querySelector(".mobile-nav");
 
     // Scroll effect
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
-        header?.classList.add('scrolled');
+        header?.classList.add("scrolled");
       } else {
-        header?.classList.remove('scrolled');
+        header?.classList.remove("scrolled");
       }
     });
 
     // Mobile menu toggle
-    mobileBtn?.addEventListener('click', () => {
-      mobileBtn.classList.toggle('is-active');
-      mobileNav?.classList.toggle('is-open');
-      document.body.style.overflow = mobileNav?.classList.contains('is-open') ? 'hidden' : '';
+    mobileBtn?.addEventListener("click", () => {
+      mobileBtn.classList.toggle("is-active");
+      mobileNav?.classList.toggle("is-open");
+      document.body.style.overflow = mobileNav?.classList.contains("is-open")
+        ? "hidden"
+        : "";
     });
   };
 
-  document.addEventListener('DOMContentLoaded', initNavbar);
+  document.addEventListener("DOMContentLoaded", initNavbar);
 </script>

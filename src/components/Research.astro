@@ -1,12 +1,12 @@
 ---
-import { papersBloqueA, contributionsBloqueB } from '../data/research.js';
+import { papersBloqueA, contributionsBloqueB } from "../data/research.js";
 
 // Helper to get badge class based on venue
 const getBadgeClass = (venue: string) => {
-  if (venue.includes('ICML')) return 'badge-yellow';
-  if (venue.includes('Thesis')) return 'badge-green';
-  if (venue.includes('LARIM')) return 'badge-yellow';
-  return 'badge-blue'; // Default Journals
+  if (venue.includes("ICML")) return "badge-yellow";
+  if (venue.includes("Thesis")) return "badge-green";
+  if (venue.includes("LARIM")) return "badge-yellow";
+  return "badge-blue"; // Default Journals
 };
 ---
 
@@ -17,97 +17,208 @@ const getBadgeClass = (venue: string) => {
 
   <div class="container relative-z z-10">
     <div class="research-header fade-in">
-      <h2 class="section-title">Research & <span class="text-accent">Publications</span></h2>
+      <h2 class="section-title">
+        Research & <span class="text-accent">Publications</span>
+      </h2>
       <div class="mock-filters">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="transformers">Transformers</button>
-        <button class="filter-btn" data-filter="time series">Time Series</button>
-        <button class="filter-btn" data-filter="astrophysics">Astrophysics</button>
+        <button class="filter-btn" data-filter="transformers"
+          >Transformers</button
+        >
+        <button class="filter-btn" data-filter="time series">Time Series</button
+        >
+        <button class="filter-btn" data-filter="astrophysics"
+          >Astrophysics</button
+        >
       </div>
     </div>
-    
+
     <!-- Bloque A: First Author Papers -->
     <div class="research-block fade-in">
       <h3 class="subsection-title">First Author Papers</h3>
-      
+
       <div class="papers-grid">
-        {papersBloqueA.map(paper => (
-          <article class="paper-card glass" data-keywords={[...paper.data, ...paper.frameworks].join(' ').toLowerCase()}>
-            <div class="paper-image-wrapper">
-              <img src={paper.image.replace("3b82f6", "00e5ff")} alt={paper.title} class="paper-image" loading="lazy" />
-              
-              <div class="status-badge-container">
-                {paper.status === 'published' ? (
-                  <span class="status-badge published">Published</span>
-                ) : (
-                  <span class="status-badge in-progress">In Progress</span>
-                )}
+        {
+          papersBloqueA.map((paper) => (
+            <article
+              class="paper-card glass"
+              data-keywords={[...paper.data, ...paper.frameworks]
+                .join(" ")
+                .toLowerCase()}
+            >
+              <div class="paper-image-wrapper">
+                <img
+                  src={paper.image.replace("3b82f6", "00e5ff")}
+                  alt={paper.title}
+                  class="paper-image"
+                  loading="lazy"
+                />
+
+                <div class="status-badge-container">
+                  {paper.status === "published" ? (
+                    <span class="status-badge published">Published</span>
+                  ) : (
+                    <span class="status-badge in-progress">In Progress</span>
+                  )}
+                </div>
               </div>
-            </div>
-            
-            <div class="paper-content">
-              <span class={`venue-badge ${getBadgeClass(paper.venue)}`}>{paper.venue}</span>
-              <h4 class="paper-title">{paper.title}</h4>
-              <p class="paper-desc">{paper.description}</p>
-              
-              <div class="paper-chips">
-                {paper.data.map(d => <span class="chip chip-data">{d}</span>)}
-                {paper.frameworks.map(f => <span class="chip chip-framework">{f}</span>)}
+
+              <div class="paper-content">
+                <span class={`venue-badge ${getBadgeClass(paper.venue)}`}>
+                  {paper.venue}
+                </span>
+                <h4 class="paper-title">{paper.title}</h4>
+                <p class="paper-desc">{paper.description}</p>
+
+                <div class="paper-chips">
+                  {paper.data.map((d) => (
+                    <span class="chip chip-data">{d}</span>
+                  ))}
+                  {paper.frameworks.map((f) => (
+                    <span class="chip chip-framework">{f}</span>
+                  ))}
+                </div>
+
+                <div class="paper-actions">
+                  {paper.paper ? (
+                    <a
+                      href={paper.paper}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-primary btn-sm"
+                    >
+                      Read Paper
+                    </a>
+                  ) : (
+                    <button
+                      class="btn btn-primary btn-sm"
+                      disabled
+                      title="Coming soon"
+                    >
+                      Read Paper
+                    </button>
+                  )}
+
+                  {paper.github ? (
+                    <a
+                      href={paper.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-sm"
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                      GitHub
+                    </a>
+                  ) : (
+                    <button class="btn btn-sm tooltip-trigger" disabled>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                      GitHub
+                      <span class="tooltip">Coming soon</span>
+                    </button>
+                  )}
+                </div>
               </div>
-              
-              <div class="paper-actions">
-                {paper.paper ? (
-                  <a href={paper.paper} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Read Paper</a>
-                ) : (
-                  <button class="btn btn-primary btn-sm" disabled title="Coming soon">Read Paper</button>
-                )}
-                
-                {paper.github ? (
-                  <a href={paper.github} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    GitHub
-                  </a>
-                ) : (
-                  <button class="btn btn-sm tooltip-trigger" disabled>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    GitHub
-                    <span class="tooltip">Coming soon</span>
-                  </button>
-                )}
-              </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))
+        }
       </div>
     </div>
 
     <!-- Bloque B: Contributions -->
     <div class="research-block contributions-block fade-in">
       <h3 class="subsection-title">Contributions & Co-Authored Papers</h3>
-      
+
       <div class="contributions-list">
-        {contributionsBloqueB.map(contrib => (
-          <div class="contribution-item glass" data-keywords={contrib.frameworks.join(' ').toLowerCase()}>
-            <span class={`venue-badge ${getBadgeClass(contrib.venue)}`}>{contrib.venue}</span>
-            <h4 class="contrib-title" title={contrib.title}>{contrib.title}</h4>
-            <div class="paper-chips inline">
-              {contrib.frameworks.map(f => <span class="chip chip-framework">{f}</span>)}
+        {
+          contributionsBloqueB.map((contrib) => (
+            <div
+              class="contribution-item glass"
+              data-keywords={contrib.frameworks.join(" ").toLowerCase()}
+            >
+              <span class={`venue-badge ${getBadgeClass(contrib.venue)}`}>
+                {contrib.venue}
+              </span>
+              <h4 class="contrib-title" title={contrib.title}>
+                {contrib.title}
+              </h4>
+              <div class="paper-chips inline">
+                {contrib.frameworks.map((f) => (
+                  <span class="chip chip-framework">{f}</span>
+                ))}
+              </div>
+
+              <div class="contrib-actions">
+                {contrib.paper && (
+                  <a
+                    href={contrib.paper}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link-btn"
+                    title="Read Paper"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                      <path d="M14 3v5h5M16 13H8M16 17H8M10 9H8" />
+                    </svg>
+                  </a>
+                )}
+                {contrib.github && (
+                  <a
+                    href={contrib.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link-btn"
+                    title="GitHub Repo"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                    </svg>
+                  </a>
+                )}
+              </div>
             </div>
-            
-            <div class="contrib-actions">
-              {contrib.paper && (
-                <a href={contrib.paper} target="_blank" rel="noopener noreferrer" class="link-btn" title="Read Paper">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8"/></svg>
-                </a>
-              )}
-              {contrib.github && (
-                 <a href={contrib.github} target="_blank" rel="noopener noreferrer" class="link-btn" title="GitHub Repo">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                 </a>
-              )}
-            </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </div>
@@ -121,8 +232,12 @@ const getBadgeClass = (venue: string) => {
     overflow: hidden;
   }
 
-  .relative-z { position: relative; }
-  .z-10 { z-index: 10; }
+  .relative-z {
+    position: relative;
+  }
+  .z-10 {
+    z-index: 10;
+  }
 
   /* Decorative Background Setup */
   .bg-typography {
@@ -177,7 +292,7 @@ const getBadgeClass = (venue: string) => {
     flex-wrap: wrap;
     gap: 1.5rem;
   }
-  
+
   .research-header .section-title {
     margin-bottom: 0;
   }
@@ -225,7 +340,10 @@ const getBadgeClass = (venue: string) => {
     border: var(--surface-border);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .paper-card:hover {
@@ -246,7 +364,9 @@ const getBadgeClass = (venue: string) => {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s ease, filter 0.5s ease;
+    transition:
+      transform 0.8s ease,
+      filter 0.5s ease;
   }
 
   .paper-card:hover .paper-image {
@@ -283,9 +403,17 @@ const getBadgeClass = (venue: string) => {
   }
 
   @keyframes pulse {
-    0% { opacity: 0.6; }
-    50% { opacity: 1; border-color: var(--color-accent); color: var(--color-accent); }
-    100% { opacity: 0.6; }
+    0% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+    100% {
+      opacity: 0.6;
+    }
   }
 
   .paper-content {
@@ -297,16 +425,25 @@ const getBadgeClass = (venue: string) => {
 
   .venue-badge {
     align-self: flex-start;
-    font-size: 0.70rem;
+    font-size: 0.7rem;
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     font-family: var(--font-mono);
     margin-bottom: 0.8rem;
   }
 
-  .badge-yellow { background-color: rgba(255, 204, 0, 0.1); color: #ffcc00; }
-  .badge-blue { background-color: rgba(0, 153, 255, 0.1); color: #0099ff; }
-  .badge-green { background-color: rgba(0, 229, 255, 0.1); color: var(--color-accent); }
+  .badge-yellow {
+    background-color: rgba(255, 204, 0, 0.1);
+    color: #ffcc00;
+  }
+  .badge-blue {
+    background-color: rgba(0, 153, 255, 0.1);
+    color: #0099ff;
+  }
+  .badge-green {
+    background-color: rgba(0, 229, 255, 0.1);
+    color: var(--color-accent);
+  }
 
   .paper-title {
     font-size: 1.1rem;
@@ -411,7 +548,10 @@ const getBadgeClass = (venue: string) => {
     padding: 1.2rem 1.5rem;
     border-radius: 8px;
     border: var(--surface-border);
-    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .contribution-item:hover {
@@ -421,7 +561,7 @@ const getBadgeClass = (venue: string) => {
 
   /* Force venue badge to look good inside its strict column */
   .contribution-item .venue-badge {
-    margin-bottom: 0; 
+    margin-bottom: 0;
     text-align: center;
     justify-self: start;
     white-space: nowrap;
@@ -459,25 +599,31 @@ const getBadgeClass = (venue: string) => {
   }
 
   @media (max-width: 1200px) {
-    .papers-grid { grid-template-columns: repeat(3, 1fr); }
+    .papers-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
   @media (max-width: 900px) {
-    .papers-grid { grid-template-columns: repeat(2, 1fr); }
-    
+    .papers-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     .contribution-item {
       /* Collapse chips if screen smaller */
       grid-template-columns: 100px 1fr 80px;
       gap: 1rem;
     }
-    
+
     /* Hide chips on smaller screens inside block B */
     .contribution-item .paper-chips {
       display: none;
     }
   }
   @media (max-width: 600px) {
-    .papers-grid { grid-template-columns: 1fr; }
-    
+    .papers-grid {
+      grid-template-columns: 1fr;
+    }
+
     .contribution-item {
       display: flex;
       flex-direction: column;
@@ -488,7 +634,7 @@ const getBadgeClass = (venue: string) => {
     .contrib-actions {
       width: 100%;
       justify-content: flex-end;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding-top: 0.8rem;
     }
   }
@@ -497,38 +643,56 @@ const getBadgeClass = (venue: string) => {
 <script>
   // --- Research keyword filter logic ---
   const initFilter = () => {
-    const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-    const paperCards = document.querySelectorAll<HTMLElement>('.paper-card');
-    const contribItems = document.querySelectorAll<HTMLElement>('.contribution-item');
+    const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+    const paperCards = document.querySelectorAll<HTMLElement>(".paper-card");
+    const contribItems =
+      document.querySelectorAll<HTMLElement>(".contribution-item");
 
     // Map filter button label -> keywords to match against data-keywords
     const KEYWORD_MAP: Record<string, string[]> = {
-      'all': [],
-      'transformers': ['transformers', 'vit', 'astromer', 'atat', 'transformer'],
-      'time series': ['time series', 'light curves', 'irregular time series', 'alert streams'],
-      'astrophysics': ['time series', 'multi-band', 'light curves', 'irregular time series', 'alert streams', 'simulated data', 'astromer', 'atat'],
+      all: [],
+      transformers: ["transformers", "vit", "astromer", "atat", "transformer"],
+      "time series": [
+        "time series",
+        "light curves",
+        "irregular time series",
+        "alert streams",
+      ],
+      astrophysics: [
+        "time series",
+        "multi-band",
+        "light curves",
+        "irregular time series",
+        "alert streams",
+        "simulated data",
+        "astromer",
+        "atat",
+      ],
     };
 
-    const filterItems = (items: NodeListOf<HTMLElement>, keywords: string[]) => {
-      items.forEach(item => {
-        const kw = (item.dataset.keywords || '').toLowerCase();
+    const filterItems = (
+      items: NodeListOf<HTMLElement>,
+      keywords: string[],
+    ) => {
+      items.forEach((item) => {
+        const kw = (item.dataset.keywords || "").toLowerCase();
         if (keywords.length === 0) {
-          item.style.display = '';
-          item.style.opacity = '1';
+          item.style.display = "";
+          item.style.opacity = "1";
         } else {
-          const matches = keywords.some(k => kw.includes(k));
-          item.style.display = matches ? '' : 'none';
-          item.style.opacity = matches ? '1' : '0';
+          const matches = keywords.some((k) => kw.includes(k));
+          item.style.display = matches ? "" : "none";
+          item.style.opacity = matches ? "1" : "0";
         }
       });
     };
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
 
-        const filterKey = (btn.dataset.filter || 'all').toLowerCase();
+        const filterKey = (btn.dataset.filter || "all").toLowerCase();
         const keywords = KEYWORD_MAP[filterKey] ?? [];
 
         filterItems(paperCards, keywords);
@@ -537,5 +701,5 @@ const getBadgeClass = (venue: string) => {
     });
   };
 
-  document.addEventListener('DOMContentLoaded', initFilter);
+  document.addEventListener("DOMContentLoaded", initFilter);
 </script>

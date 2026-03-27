@@ -1,17 +1,21 @@
 ---
-import '../styles/global.css';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import StarsBackground from "../components/StarsBackground.astro";
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Daniel Moreno Cartagena - Machine Learning Engineer & Researcher Portfolio" } = Astro.props;
+const {
+  title,
+  description = "Daniel Moreno Cartagena - Machine Learning Engineer & Researcher Portfolio",
+} = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,55 +28,59 @@ const { title, description = "Daniel Moreno Cartagena - Machine Learning Enginee
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    
+
     <!-- CountUp.js from CDN -->
-    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
+    <script
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"
+    ></script>
   </head>
   <body>
+    <StarsBackground />
     <!-- Navbar injected in BaseLayout so we don't repeat on each page -->
     <Navbar />
 
     <slot />
-    
+
     <Footer />
-    
+
     <button id="back-to-top" aria-label="Back to top">↑</button>
 
     <script>
       // Back to top floating button logic
-      const backToTopBtn = document.getElementById('back-to-top');
-      window.addEventListener('scroll', () => {
+      const backToTopBtn = document.getElementById("back-to-top");
+      window.addEventListener("scroll", () => {
         if (window.scrollY > 300) {
-          backToTopBtn?.classList.add('visible');
+          backToTopBtn?.classList.add("visible");
         } else {
-          backToTopBtn?.classList.remove('visible');
+          backToTopBtn?.classList.remove("visible");
         }
       });
-      
-      backToTopBtn?.addEventListener('click', (e) => {
+
+      backToTopBtn?.addEventListener("click", (e) => {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
       // Intersection Observer for generic fade-in animations on sections
       const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.15
+        rootMargin: "0px",
+        threshold: 0.05,
       };
 
       const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add("visible");
             observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      document.addEventListener('DOMContentLoaded', () => {
-        const fadeElements = document.querySelectorAll('.fade-in');
-        fadeElements.forEach(el => observer.observe(el));
+      document.addEventListener("DOMContentLoaded", () => {
+        const fadeElements = document.querySelectorAll(".fade-in");
+        fadeElements.forEach((el) => observer.observe(el));
       });
     </script>
   </body>
