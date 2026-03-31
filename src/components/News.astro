@@ -1,5 +1,9 @@
 ---
+interface Props {
+  isInProgress?: boolean;
+}
 
+const { isInProgress = true } = Astro.props;
 ---
 
 <section id="news" class="section news-section">
@@ -17,66 +21,84 @@
       </p>
     </div>
 
-    <div class="timeline fade-in">
-      <!-- Item 1: Right -->
-      <div class="timeline-item right">
-        <div class="timeline-content glass">
-          <span class="news-date">August 2026</span>
-          <h4 class="news-title">Paper Accepted at ICML</h4>
-          <p class="news-desc">
-            Our novel Vision Transformer approach for Time Series was accepted.
-          </p>
+    {
+      isInProgress ? (
+        <div class="in-progress-container fade-in">
+          <div class="in-progress-card glass">
+            <div class="status-badge">
+              <span class="status-dot"></span>
+              In Progress
+            </div>
+            <h3>Something big is coming...</h3>
+            <p>I'm currently curating my latest achievements and professional updates. This section will be live very soon.</p>
+            <div class="progress-bar-minimal">
+              <div class="progress-fill"></div>
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div class="timeline fade-in">
+          <!-- Item 1: Right -->
+          <div class="timeline-item right">
+            <div class="timeline-content glass">
+              <span class="news-date">August 2026</span>
+              <h4 class="news-title">Paper Accepted at ICML</h4>
+              <p class="news-desc">
+                Our novel Vision Transformer approach for Time Series was accepted.
+              </p>
+            </div>
+          </div>
 
-      <!-- Item 2: Left -->
-      <div class="timeline-item left">
-        <div class="timeline-content glass">
-          <span class="news-date">June 2026</span>
-          <h4 class="news-title">Speaker at LARIM</h4>
-          <p class="news-desc">
-            Presented research on Semi-Supervised Domain Adaptation in front of
-            500+ attendees.
-          </p>
-        </div>
-      </div>
+          <!-- Item 2: Left -->
+          <div class="timeline-item left">
+            <div class="timeline-content glass">
+              <span class="news-date">June 2026</span>
+              <h4 class="news-title">Speaker at LARIM</h4>
+              <p class="news-desc">
+                Presented research on Semi-Supervised Domain Adaptation in front of
+                500+ attendees.
+              </p>
+            </div>
+          </div>
 
-      <!-- Item 3: Right -->
-      <div class="timeline-item right">
-        <div class="timeline-content glass">
-          <span class="news-date">January 2026</span>
-          <h4 class="news-title">New Tutorial Series Released</h4>
-          <p class="news-desc">
-            Deep Learning for Astronomy full course published on YouTube to
-            democratize AI.
-          </p>
-        </div>
-      </div>
+          <!-- Item 3: Right -->
+          <div class="timeline-item right">
+            <div class="timeline-content glass">
+              <span class="news-date">January 2026</span>
+              <h4 class="news-title">New Tutorial Series Released</h4>
+              <p class="news-desc">
+                Deep Learning for Astronomy full course published on YouTube to
+                democratize AI.
+              </p>
+            </div>
+          </div>
 
-      <!-- Item 4: Left -->
-      <div class="timeline-item left">
-        <div class="timeline-content glass">
-          <span class="news-date">November 2025</span>
-          <h4 class="news-title">Research Grant Awarded</h4>
-          <p class="news-desc">
-            Received funding for computational modeling of synthetic variable
-            star populations.
-          </p>
-        </div>
-      </div>
+          <!-- Item 4: Left -->
+          <div class="timeline-item left">
+            <div class="timeline-content glass">
+              <span class="news-date">November 2025</span>
+              <h4 class="news-title">Research Grant Awarded</h4>
+              <p class="news-desc">
+                Received funding for computational modeling of synthetic variable
+                star populations.
+              </p>
+            </div>
+          </div>
 
-      <!-- Item 5: Right -->
-      <div class="timeline-item right">
-        <div class="timeline-content glass">
-          <span class="news-date">September 2025</span>
-          <h4 class="news-title">Join the Lab</h4>
-          <p class="news-desc">
-            Started my new position as a Machine Learning Engineer handling
-            massive photometric data.
-          </p>
+          <!-- Item 5: Right -->
+          <div class="timeline-item right">
+            <div class="timeline-content glass">
+              <span class="news-date">September 2025</span>
+              <h4 class="news-title">Join the Lab</h4>
+              <p class="news-desc">
+                Started my new position as a Machine Learning Engineer handling
+                massive photometric data.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )
+    }
   </div>
 </section>
 
@@ -136,6 +158,90 @@
     color: var(--color-text-muted);
     font-size: 1.4rem;
     margin-top: -1.5rem;
+  }
+
+  /* In Progress UI */
+  .in-progress-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  .in-progress-card {
+    padding: 4rem 3rem;
+    text-align: center;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.2rem;
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--color-accent);
+    border-radius: 50px;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--color-accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .in-progress-card h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+
+  .in-progress-card p {
+    font-size: 1.3rem;
+    color: var(--color-text-muted);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  .progress-bar-minimal {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 65%; /* Arbitrary progress */
+    background: var(--color-accent);
+    box-shadow: 0 0 15px var(--color-accent);
+    border-radius: 10px;
+    animation: sweep 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes sweep {
+    0% { left: -70%; }
+    100% { left: 100%; }
   }
 
   /* Creative Timeline Style */
@@ -296,5 +402,14 @@
       border-left-color: transparent;
       border-right-color: rgba(10, 10, 10, 0.7);
     }
+    
+    .in-progress-card {
+      padding: 3rem 1.5rem;
+    }
+    
+    .in-progress-card h3 {
+      font-size: 1.8rem;
+    }
   }
 </style>
+
