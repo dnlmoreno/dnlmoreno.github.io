@@ -8,7 +8,7 @@ export const papersBloqueA = [
     frameworks: ["PyTorch", "Transformers"],
     github: null,
     paper: "https://ml4astro.github.io/icml2025/assets/camera_ready/47_Image_Based_Multi_Survey_Cl.pdf",
-    image: "public/images/ms_paper.png" // [TELESCOPE_FIGURE]
+    image: "/images/ms_paper.png" // [TELESCOPE_FIGURE]
   },
   {
     title: "Leveraging pre-trained vision Transformers for multi-band photometric light curve classification",
