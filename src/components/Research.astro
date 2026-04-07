@@ -20,17 +20,6 @@ const getBadgeClass = (venue: string) => {
       <h2 class="section-title">
         Research & <span class="text-accent">Publications</span>
       </h2>
-      <div class="mock-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="transformers"
-          >Transformers</button
-        >
-        <button class="filter-btn" data-filter="time series">Time Series</button
-        >
-        <button class="filter-btn" data-filter="astrophysics"
-          >Astrophysics</button
-        >
-      </div>
     </div>
 
     <!-- Bloque A: First Author Papers -->
@@ -42,9 +31,6 @@ const getBadgeClass = (venue: string) => {
           papersBloqueA.map((paper) => (
             <article
               class="paper-card glass"
-              data-keywords={[...paper.data, ...paper.frameworks]
-                .join(" ")
-                .toLowerCase()}
             >
               <div class="paper-image-wrapper">
                 <img
@@ -155,7 +141,6 @@ const getBadgeClass = (venue: string) => {
           contributionsBloqueB.map((contrib) => (
             <div
               class="contribution-item glass"
-              data-keywords={contrib.frameworks.join(" ").toLowerCase()}
             >
               <span class={`venue-badge ${getBadgeClass(contrib.venue)}`}>
                 {contrib.venue}
@@ -286,48 +271,12 @@ const getBadgeClass = (venue: string) => {
     padding-left: 1rem;
   }
 
-  /* Mock Filters */
   .research-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    margin-bottom: 4rem;
   }
 
   .research-header .section-title {
     margin-bottom: 0;
-  }
-
-  .mock-filters {
-    display: flex;
-    gap: 0.8rem;
-    background: var(--surface-gradient), rgba(10, 15, 28, 0.6);
-    padding: 0.5rem;
-    border-radius: 50px;
-    border: var(--surface-border);
-  }
-
-  .filter-btn {
-    background: transparent;
-    color: var(--color-text-muted);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    font-family: var(--font-mono);
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .filter-btn:hover {
-    color: var(--color-text);
-  }
-
-  .filter-btn.active {
-    background: var(--color-accent);
-    color: var(--color-bg);
   }
 
   /* Grid Bloque A */
@@ -698,66 +647,3 @@ const getBadgeClass = (venue: string) => {
   }
 </style>
 
-<script>
-  // --- Research keyword filter logic ---
-  const initFilter = () => {
-    const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
-    const paperCards = document.querySelectorAll<HTMLElement>(".paper-card");
-    const contribItems =
-      document.querySelectorAll<HTMLElement>(".contribution-item");
-
-    // Map filter button label -> keywords to match against data-keywords
-    const KEYWORD_MAP: Record<string, string[]> = {
-      all: [],
-      transformers: ["transformers", "vit", "astromer", "atat", "transformer"],
-      "time series": [
-        "time series",
-        "light curves",
-        "irregular time series",
-        "alert streams",
-      ],
-      astrophysics: [
-        "time series",
-        "multi-band",
-        "light curves",
-        "irregular time series",
-        "alert streams",
-        "simulated data",
-        "astromer",
-        "atat",
-      ],
-    };
-
-    const filterItems = (
-      items: NodeListOf<HTMLElement>,
-      keywords: string[],
-    ) => {
-      items.forEach((item) => {
-        const kw = (item.dataset.keywords || "").toLowerCase();
-        if (keywords.length === 0) {
-          item.style.display = "";
-          item.style.opacity = "1";
-        } else {
-          const matches = keywords.some((k) => kw.includes(k));
-          item.style.display = matches ? "" : "none";
-          item.style.opacity = matches ? "1" : "0";
-        }
-      });
-    };
-
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        buttons.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const filterKey = (btn.dataset.filter || "all").toLowerCase();
-        const keywords = KEYWORD_MAP[filterKey] ?? [];
-
-        filterItems(paperCards, keywords);
-        filterItems(contribItems, keywords);
-      });
-    });
-  };
-
-  document.addEventListener("DOMContentLoaded", initFilter);
-</script>
