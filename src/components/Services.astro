@@ -2,114 +2,115 @@
 // Services.astro
 ---
 <section id="services" class="section services-section">
-  <!-- Decorative Background -->
-  <div class="bg-typography">SERVICES</div>
-  <div class="bg-orb orb-s1"></div>
-  <div class="bg-orb orb-s2"></div>
-
   <div class="container relative-z">
-    <!-- Header (no freelance badge here) -->
-    <div class="services-header fade-in">
-      <h2 class="section-title">What I Can Build <span class="text-accent">For You</span></h2>
-      <p class="subtitle">
-        From cutting-edge AI systems to polished web experiences — I bring research-grade rigor to real-world projects.
-      </p>
+    <!-- Hero: "What I Work On" plus the 3 service cards, all in one 4-column row,
+         so the whole picture is visible together without scrolling. -->
+    <div class="svc-hero fade-in">
+      <div class="svc-hero-text">
+        <h1 class="svc-hero-title">What I <span class="text-accent">Work On</span></h1>
+        <p class="svc-hero-desc">
+          I work at the intersection of machine learning, data and science.
+          I can help with research, engineering and web development
+          projects.
+        </p>
+      </div>
+
+      <div class="svc-cards-row">
+        <div class="svc-card">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path>
+              <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path>
+            </svg>
+          </div>
+          <h3>AI & ML Consulting</h3>
+          <p>Model design, architecture reviews, and research-to-production guidance.</p>
+          <div class="svc-card-tags">Data Analytics &middot; MLOps &middot; State of the Art</div>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
+            </svg>
+          </div>
+          <h3>AI Agents & RAG Systems</h3>
+          <p>LLM-powered agents, RAG pipelines, and chatbots built on your own data.</p>
+          <div class="svc-card-tags">RAG &middot; AI Assistants &middot; Workflow Automation</div>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3>Web Development</h3>
+          <p>Websites and portfolios, from personal sites to full product pages.</p>
+          <div class="svc-card-tags">Astro &middot; Next.js &middot; React &middot; TypeScript</div>
+        </div>
+      </div>
     </div>
 
-    <!-- Services Grid (3 cards) -->
-    <div class="services-grid fade-in">
+    <!-- Selected Work: case study -->
+    <div class="work-section fade-in">
+      <div class="section-tag">// SELECTED WORK</div>
 
-      <!-- Card 1: AI/ML Consulting (merged with Data Science) -->
-      <div class="service-card glass">
-        <div class="card-glow"></div>
-        <div class="service-icon-wrap">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
-              <path d="M12 8v4l3 3"/>
-              <circle cx="12" cy="12" r="3" fill="var(--color-accent)" fill-opacity="0.15"/>
-            </svg>
-          </div>
+      <a
+        href="https://masespacio.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="work-card"
+      >
+        <div class="work-image">
+          <img
+            src="/images/masespacio_preview.webp"
+            alt="Más Espacio website"
+            loading="lazy"
+          />
         </div>
-        <h3 class="service-title">AI & ML Consulting</h3>
-        <p class="service-desc">Custom model design, architecture reviews, and research-to-production guidance.</p>
-        <ul class="service-features">
-          <li>Transform raw data into actionable insights for smarter decisions</li>
-          <li>Bridging the gap between academia and industry applications</li>
-          <li>End-to-end data pipelines</li>
-        </ul>
-        <div class="service-tag-row">
-          <span class="stag">PyTorch</span>
-          <span class="stag">Transformers</span>
-          <span class="stag">Data Science</span>
-          <span class="stag">MLOps</span>
+        <div class="work-content">
+          <span class="work-tag">WEB DEVELOPMENT</span>
+          <h4 class="work-title">Más Espacio</h4>
+          <p class="work-desc">
+            Designed and built the website for Más Espacio, a Chilean science
+            outreach collective that brings astronomy and STEM to schools and
+            communities across the country, with school-visit bookings, an
+            events calendar, and a blog.
+          </p>
+          <div class="work-tags">Next.js &middot; React &middot; TypeScript</div>
+          <span class="work-link">&rarr; Visit site</span>
         </div>
-      </div>
-
-      <!-- Card 2: AI Agents & RAG Systems -->
-      <div class="service-card glass">
-        <div class="card-glow"></div>
-        <div class="service-icon-wrap">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              <path d="M8 10h.01M12 10h.01M16 10h.01"/>
-            </svg>
-          </div>
-        </div>
-        <h3 class="service-title">AI Agents & RAG Systems</h3>
-        <p class="service-desc">Custom LLM-powered agents, RAG pipelines, and intelligent chatbots that integrate seamlessly with your existing workflows and knowledge bases.</p>
-        <ul class="service-features">
-          <li>Custom RAG pipelines</li>
-          <li>Intelligent chatbots</li>
-          <li>Agentic automation</li>
-        </ul>
-        <div class="service-tag-row">
-          <span class="stag">LangChain</span>
-          <span class="stag">OpenAI</span>
-          <span class="stag">Pinecone</span>
-          <span class="stag">LlamaIndex</span>
-        </div>
-      </div>
-
-      <!-- Card 3: Web Development (featured) -->
-      <div class="service-card glass">
-        <div class="card-glow"></div>
-        <div class="service-icon-wrap">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M3 9h18M9 21V9"/>
-            </svg>
-          </div>
-        </div>
-        <h3 class="service-title">Web Development</h3>
-        <p class="service-desc">Modern, high-performance websites and portfolios — from personal brand sites to full product pages, built with premium aesthetics and scalable architecture.</p>
-        <ul class="service-features">
-          <li>Portfolio & landing pages</li>
-          <li>Product & startup sites</li>
-          <li>Performance optimization</li>
-        </ul>
-        <div class="service-tag-row">
-          <span class="stag">Astro</span>
-          <span class="stag">Next.js</span>
-          <span class="stag">React</span>
-          <span class="stag">TypeScript</span>
-        </div>
-      </div>
-
-
-    </div><!-- .services-grid -->
-
-    <!-- CTA Row -->
-    <div class="services-cta fade-in">
-      <p class="cta-text">Have a project in mind? Let's make it happen.</p>
-      <a href="/contact" class="btn btn-primary cta-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        Get in Touch
       </a>
     </div>
 
+    <!-- CTA band -->
+    <div class="svc-cta fade-in">
+      <img
+        src="/images/earth_satellite.webp"
+        alt=""
+        class="svc-cta-photo"
+        aria-hidden="true"
+        loading="lazy"
+      />
+      <div class="svc-cta-inner">
+        <div class="svc-cta-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m22 2-7 20-4-9-9-4Z"></path>
+            <path d="M22 2 11 13"></path>
+          </svg>
+        </div>
+        <div class="svc-cta-text">
+          <h3>Have an idea or project?</h3>
+          <p>I'm always open to discussing research collaborations, new ideas or potential projects.</p>
+        </div>
+        <a href="/contact" class="svc-cta-btn">
+          Get in touch &rarr;
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -117,7 +118,7 @@
   .services-section {
     position: relative;
     overflow: hidden;
-    padding-top: 120px;
+    padding-top: 95px;
     padding-bottom: 80px;
   }
 
@@ -126,280 +127,370 @@
     z-index: 10;
   }
 
-  /* Decorative Background */
-  .bg-typography {
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 15vw;
-    font-family: var(--font-sans);
-    font-weight: 800;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.025);
-    white-space: nowrap;
-    z-index: 1;
-    pointer-events: none;
-    letter-spacing: 0.1em;
-  }
-
-  .bg-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .orb-s1 {
-    width: 400px;
-    height: 400px;
-    background: var(--color-accent);
-    opacity: 0.06;
-    top: 10%;
-    right: -150px;
-  }
-
-  .orb-s2 {
-    width: 350px;
-    height: 350px;
-    background: var(--color-accent-secondary);
-    opacity: 0.08;
-    bottom: 0;
-    left: -100px;
-  }
-
-  /* Header */
-  .services-header {
-    text-align: center;
-    margin-bottom: 5rem;
-  }
-
-  .subtitle {
+  .section-tag {
     font-family: var(--font-mono);
-    color: var(--color-text-muted);
-    font-size: 1.4rem;
-    margin-top: 1rem;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+    display: inline-block;
   }
 
-  /* Grid — 3 equal columns */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 4rem;
+  /* Hero: title/description on the left, the 3 service cards on the right,
+     so everything is visible together on page load without scrolling. */
+  .svc-hero {
+    display: flex;
+    align-items: stretch;
+    gap: 2.6rem;
+    margin-bottom: 2.5rem;
   }
 
-  /* Card */
-  .service-card {
+  .svc-hero-text {
+    flex: 0 0 400px;
+  }
+
+  .svc-hero-title {
     position: relative;
-    padding: 2.4rem;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, border-color 0.35s ease;
-    cursor: default;
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.6rem;
+  }
+
+  /* Same underline treatment as "Research & Publications" on the Research page
+     (.section-title::after in global.css) */
+  .svc-hero-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60%;
+    height: 2px;
+    background-color: var(--color-accent);
+  }
+
+  .svc-hero-desc {
+    font-family: var(--font-sans);
+    font-size: 1.45rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  /* Service cards, tightly grouped in their own row next to the hero text */
+  .svc-cards-row {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    gap: 0.9rem;
+  }
+
+  .svc-card {
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
+    padding: 1.3rem 1.4rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 229, 255, 0.18);
+    background: rgba(0, 229, 255, 0.025);
+    transition: border-color 0.25s ease, background 0.25s ease;
   }
 
-  .service-card:hover {
-    transform: translateY(-8px);
+  .svc-card:hover {
     border-color: rgba(0, 229, 255, 0.4);
-    box-shadow: 0 20px 50px rgba(0, 229, 255, 0.12);
+    background: rgba(0, 229, 255, 0.05);
   }
 
-  /* Featured card accent */
-  .service-card.featured {
-    border-color: rgba(0, 229, 255, 0.35);
-    background: linear-gradient(135deg, rgba(0, 229, 255, 0.06) 0%, rgba(10, 15, 28, 0.6) 60%);
-  }
-
-  .featured-label {
-    position: absolute;
-    top: 1.2rem;
-    right: 1.2rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    border: 1px solid rgba(0, 229, 255, 0.3);
-    padding: 0.25rem 0.6rem;
-    border-radius: 999px;
-    background: rgba(0, 229, 255, 0.08);
-  }
-
-  /* Glow on hover */
-  .card-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(0, 229, 255, 0.08) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-    border-radius: 16px;
-  }
-
-  .featured-glow {
-    opacity: 0.6;
-  }
-
-  .service-card:hover .card-glow {
-    opacity: 1;
-  }
-
-  /* Icon */
-  .service-icon-wrap {
-    margin-bottom: 1.5rem;
-  }
-
-  .service-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
+  .svc-card-icon {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
     background: rgba(0, 229, 255, 0.08);
     border: 1px solid rgba(0, 229, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1.1rem;
   }
 
-  .service-icon svg {
-    width: 26px;
-    height: 26px;
+  .svc-card-icon svg {
+    width: 20px;
+    height: 20px;
     color: var(--color-accent);
   }
 
-  .service-card:hover .service-icon {
-    background: rgba(0, 229, 255, 0.15);
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
-  }
-
-  /* Text */
-  .service-title {
-    font-size: 1.5rem;
-    color: var(--color-text);
-    margin-bottom: 0.8rem;
+  .svc-card h3 {
+    font-family: var(--font-mono);
+    font-size: 1.32rem;
     font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+    margin-bottom: 0.7rem;
   }
 
-  .service-desc {
-    font-size: 1.15rem;
+  .svc-card p {
+    font-family: var(--font-sans);
+    font-size: 1.22rem;
+    line-height: 1.5;
     color: var(--color-text-muted);
-    line-height: 1.65;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1rem;
   }
 
-  /* Feature list */
-  .service-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1.5rem 0;
+  .svc-card-tags {
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  /* Selected Work */
+  .work-section .section-tag {
+    font-size: 1.15rem;
+  }
+
+  .work-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .work-card {
+    display: flex;
+    gap: 2.2rem;
+    align-items: stretch;
+    margin-top: 1.4rem;
+    padding: 1.6rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.015);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  }
+
+  .work-card:hover {
+    border-color: rgba(0, 229, 255, 0.4);
+    background: rgba(0, 229, 255, 0.04);
+    transform: translateY(-3px);
+  }
+
+  .work-card:hover .work-link {
+    transform: translateX(4px);
+    color: #ffffff;
+  }
+
+  .work-image {
+    flex: 0 0 42%;
+    width: 42%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #050811;
+  }
+
+  .work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .work-content {
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
-    flex: 1;
+    justify-content: center;
+    padding: 0.4rem 0.4rem 0.4rem 0;
   }
 
-  .service-features li {
+  .work-tag {
+    align-self: flex-start;
     font-family: var(--font-mono);
-    font-size: 1.0rem;
-    color: var(--color-text-muted);
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    line-height: 1.4;
-  }
-
-  .service-features li::before {
-    content: "→";
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
     color: var(--color-accent);
-    font-size: 0.85rem;
-    margin-top: 0.1rem;
-    flex-shrink: 0;
-  }
-
-  /* Tech tags at bottom */
-  .service-tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-    padding-top: 1.2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin-top: auto;
-  }
-
-  .stag {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 0.2rem 0.6rem;
+    background: rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.25);
     border-radius: 4px;
-    transition: all 0.3s ease;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 0.9rem;
   }
 
-  .service-card:hover .stag {
+  .work-title {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .work-desc {
+    font-size: 1.42rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.1rem;
+  }
+
+  .work-tags {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.3rem;
+  }
+
+  .work-link {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    font-weight: 600;
     color: var(--color-accent);
-    border-color: rgba(0, 229, 255, 0.3);
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
   }
 
-  /* CTA */
-  .services-cta {
+  /* CTA band — its own Earth photo, same placeholder-swap note as the hero */
+  .svc-cta {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3rem 0;
+  }
+
+  .svc-cta-photo {
+    position: absolute;
+    bottom: -95%;
+    right: -9rem;
+    width: 560px;
+    height: auto;
+    max-width: none;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 1;
+    -webkit-mask-image: linear-gradient(to left, #000 20%, transparent 70%);
+    mask-image: linear-gradient(to left, #000 20%, transparent 70%);
+  }
+
+  .svc-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  .svc-cta-icon {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    background: rgba(0, 229, 255, 0.06);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
-    padding: 3rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 16px;
-    background: linear-gradient(135deg, rgba(0, 229, 255, 0.04) 0%, rgba(139, 92, 246, 0.04) 100%);
-    flex-direction: column;
   }
 
-  .cta-text {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin: 0;
-    text-align: center;
+  .svc-cta-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--color-accent);
   }
 
-  .cta-btn {
+  .svc-cta-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .svc-cta-text h3 {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .svc-cta-text p {
+    font-family: var(--font-sans);
+    font-size: 1.42rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .svc-cta-btn {
+    flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    font-size: 1.2rem;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    background: rgba(5, 8, 17, 0.75);
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    border-radius: 6px;
+    padding: 0.75rem 1.4rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .svc-cta-btn:hover {
+    background: rgba(0, 229, 255, 0.1);
+    border-color: var(--color-accent);
   }
 
   /* Responsive */
-  @media (max-width: 1024px) {
-    .services-grid {
-      grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 1280px) {
+    .svc-hero {
+      flex-direction: column;
     }
-    .service-card:last-child {
-      grid-column: 1 / -1;
-      max-width: 500px;
-      margin: 0 auto;
-      width: 100%;
+    .svc-hero-text {
+      flex: 0 0 auto;
     }
   }
 
-  @media (max-width: 640px) {
-    .services-grid {
-      grid-template-columns: 1fr;
+  @media (max-width: 1024px) {
+    .svc-cards-row {
+      flex-direction: column;
     }
-    .service-card:last-child {
-      grid-column: auto;
-      max-width: none;
+    .svc-card h3 {
+      white-space: normal;
     }
-    .bg-typography {
-      font-size: 25vw;
+    .work-card {
+      flex-direction: column;
+    }
+    .work-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+    .svc-cta-inner {
+      flex-wrap: wrap;
+    }
+    .svc-cta-btn {
+      margin-left: calc(46px + 1.6rem);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .svc-hero-title {
+      font-size: 1.9rem;
+    }
+    .svc-cta-photo {
+      display: none;
+    }
+    .svc-cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .svc-cta-btn {
+      margin-left: 0;
     }
   }
 </style>

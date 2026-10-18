@@ -34,6 +34,20 @@ const {
       is:inline
       src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"
     ></script>
+
+    <!-- Some browsers restore the scroll position from your last visit (including on
+         bfcache restores). Force every fresh load/restore back to the top so the page
+         never opens already scrolled past the hero. -->
+    <script is:inline>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      window.addEventListener("pageshow", () => {
+        if (!window.location.hash) {
+          window.scrollTo(0, 0);
+        }
+      });
+    </script>
   </head>
   <body>
     <StarsBackground />

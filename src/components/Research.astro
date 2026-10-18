@@ -1,7 +1,8 @@
 ---
 import { papersBloqueA, contributionsBloqueB } from "../data/research.js";
+import PaperCard from "./PaperCard.astro";
 
-// Helper to get badge class based on venue
+// Helper to get badge class based on venue (used only for Bloque B contribution rows below)
 const getBadgeClass = (venue: string) => {
   if (venue.includes("ICML")) return "badge-yellow";
   if (venue.includes("Thesis")) return "badge-green";
@@ -27,108 +28,7 @@ const getBadgeClass = (venue: string) => {
       <h3 class="subsection-title">First & Second Author Papers</h3>
 
       <div class="papers-grid">
-        {
-          papersBloqueA.map((paper) => (
-            <article
-              class="paper-card glass"
-            >
-              <div class="paper-image-wrapper">
-                <img
-                  src={paper.image.replace("3b82f6", "00e5ff")}
-                  alt={paper.title}
-                  class="paper-image"
-                  loading="lazy"
-                />
-
-                <div class="status-badge-container">
-                  {paper.status === "published" ? (
-                    <span class="status-badge published">Published</span>
-                  ) : (
-                    <span class="status-badge in-progress">In Progress</span>
-                  )}
-                </div>
-              </div>
-
-              <div class="paper-content">
-                <span class={`venue-badge ${getBadgeClass(paper.venue)}`}>
-                  {paper.venue}
-                </span>
-                <h4 class="paper-title">{paper.title}</h4>
-                <p class="paper-desc">{paper.description}</p>
-
-                <div class="paper-chips">
-                  {paper.data.map((d) => (
-                    <span class="chip chip-data">{d}</span>
-                  ))}
-                  {paper.frameworks.map((f) => (
-                    <span class="chip chip-framework">{f}</span>
-                  ))}
-                </div>
-
-                <div class="paper-actions">
-                  {paper.paper ? (
-                    <a
-                      href={paper.paper}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn btn-primary btn-sm"
-                    >
-                      Read Paper
-                    </a>
-                  ) : (
-                    <button
-                      class="btn btn-primary btn-sm"
-                      disabled
-                      title="Coming soon"
-                    >
-                      Read Paper
-                    </button>
-                  )}
-
-                  {paper.github ? (
-                    <a
-                      href={paper.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn btn-sm"
-                    >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                      </svg>
-                      GitHub
-                    </a>
-                  ) : (
-                    <button class="btn btn-sm tooltip-trigger" disabled>
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                      </svg>
-                      GitHub
-                      <span class="tooltip">Coming soon</span>
-                    </button>
-                  )}
-                </div>
-              </div>
-            </article>
-          ))
-        }
+        {papersBloqueA.map((paper) => <PaperCard paper={paper} />)}
       </div>
     </div>
 
@@ -286,94 +186,11 @@ const getBadgeClass = (venue: string) => {
     gap: 1.5rem;
   }
 
-  .paper-card {
-    border-radius: 12px;
-    overflow: hidden;
-    border: var(--surface-border);
-    display: flex;
-    flex-direction: column;
-    transition:
-      transform 0.3s ease,
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-
-  .paper-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(0, 229, 255, 0.4);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
-  }
-
-  .paper-image-wrapper {
-    position: relative;
-    width: 100%;
-    height: 160px; /* Reduced slightly to fit 4 cols better */
-    overflow: hidden;
-    background-color: var(--color-bg);
-  }
-
-  .paper-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition:
-      transform 0.8s ease,
-      filter 0.5s ease;
-  }
-
-  .paper-card:hover .paper-image {
-    transform: scale(1.1);
-    filter: brightness(0.6) sepia(100%) hue-rotate(90deg) saturate(300%);
-  }
-
-  .status-badge-container {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
-
-  .status-badge {
-    padding: 0.3rem 0.6rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .published {
-    background-color: var(--color-accent);
-    color: var(--color-bg);
-  }
-
-  .in-progress {
-    background-color: transparent;
-    color: var(--color-text);
-    border: 1px dashed var(--color-text);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0% {
-      opacity: 0.6;
-    }
-    50% {
-      opacity: 1;
-      border-color: var(--color-accent);
-      color: var(--color-accent);
-    }
-    100% {
-      opacity: 0.6;
-    }
-  }
-
-  .paper-content {
-    padding: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
+  /* Note: the paper-card itself (image, badges, title, desc, actions) is now
+     rendered by the shared <PaperCard> component, used here and on the home
+     page's Selected Projects row, so both stay in sync automatically. The
+     rules below are still needed for Bloque B's contribution rows, which
+     reuse the .venue-badge / .chip classes directly in this file's markup. */
 
   .venue-badge {
     align-self: flex-start;
@@ -395,23 +212,6 @@ const getBadgeClass = (venue: string) => {
   .badge-green {
     background-color: rgba(0, 229, 255, 0.1);
     color: var(--color-accent);
-  }
-
-  .paper-title {
-    font-size: 1.1rem;
-    margin-bottom: 0.6rem;
-    line-height: 1.3;
-  }
-
-  .paper-desc {
-    font-size: 0.95rem;
-    color: var(--color-text-muted);
-    margin-bottom: 1.5rem;
-    flex: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   .paper-chips {
@@ -441,47 +241,6 @@ const getBadgeClass = (venue: string) => {
     background-color: rgba(0, 229, 255, 0.05);
     border: 1px solid rgba(0, 229, 255, 0.2);
     color: var(--color-accent);
-  }
-
-  .paper-actions {
-    display: flex;
-    gap: 0.8rem;
-    margin-top: auto;
-  }
-
-  .btn-sm {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    flex: 1;
-  }
-
-  /* Tooltip */
-  .tooltip-trigger {
-    position: relative;
-  }
-
-  .tooltip-trigger .tooltip {
-    visibility: hidden;
-    background-color: var(--color-surface);
-    color: var(--color-text);
-    text-align: center;
-    border-radius: 4px;
-    padding: 0.4rem 0.8rem;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -50px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.75rem;
-    border: 1px solid var(--color-text-muted);
-    white-space: nowrap;
-  }
-
-  .tooltip-trigger:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
   }
 
   /* Bloque B Strict Alignment Using CSS Grid */
@@ -591,15 +350,6 @@ const getBadgeClass = (venue: string) => {
       grid-template-columns: 1fr;
       gap: 1.5rem;
       padding: 0;
-    }
-
-    .paper-content {
-      padding: 1.2rem;
-    }
-
-    .paper-desc {
-      -webkit-line-clamp: none; /* Allow full description on mobile */
-      font-size: 0.9rem;
     }
 
     .bg-typography {

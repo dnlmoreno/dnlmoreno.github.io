@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" width="100%" height="100%">
+  <rect x="0" y="0" width="440" height="280" fill="#050811" />
+
+  <!-- Axes -->
+  <line x1="55" y1="20" x2="55" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="1" />
+  <line x1="55" y1="230" x2="415" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="1" />
+
+  <!-- Y axis ticks -->
+  <g font-family="monospace" font-size="9" fill="rgba(255,255,255,0.45)" text-anchor="end">
+    <text x="48" y="233">0.0</text>
+    <text x="48" y="180">0.2</text>
+    <text x="48" y="127">0.4</text>
+    <text x="48" y="74">0.6</text>
+    <text x="48" y="24">0.8</text>
+  </g>
+
+  <!-- X axis ticks -->
+  <g font-family="monospace" font-size="9" fill="rgba(255,255,255,0.45)" text-anchor="middle">
+    <text x="75" y="245">290</text>
+    <text x="155" y="245">340</text>
+    <text x="235" y="245">390</text>
+    <text x="315" y="245">440</text>
+    <text x="395" y="245">490</text>
+  </g>
+
+  <text x="235" y="263" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.55)" text-anchor="middle">Wavelength (nm)</text>
+  <text x="18" y="125" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.55)" text-anchor="middle" transform="rotate(-90 18 125)">Radiance (a.u.)</text>
+
+  <!-- Spectral bands -->
+  <g fill="none" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M75 220 Q 110 60 140 75 T 200 150 T 260 185 T 330 205 T 395 218" stroke="#00cbe2" opacity="0.95" />
+    <path d="M75 222 Q 110 85 140 100 T 200 165 T 260 195 T 330 212 T 395 222" stroke="#2fd4a0" opacity="0.9" />
+    <path d="M75 224 Q 110 105 140 122 T 200 178 T 260 203 T 330 217 T 395 225" stroke="#9d4edd" opacity="0.85" />
+    <path d="M75 226 Q 110 128 140 142 T 200 190 T 260 210 T 330 221 T 395 227" stroke="#f2c14e" opacity="0.8" />
+    <path d="M75 227 Q 110 148 140 160 T 200 200 T 260 216 T 330 224 T 395 228" stroke="#ef6c6c" opacity="0.75" />
+    <path d="M75 228 Q 110 168 140 178 T 200 210 T 260 221 T 330 227 T 395 229" stroke="#6c8cef" opacity="0.7" />
+  </g>
+
+  <!-- Legend -->
+  <g font-family="monospace" font-size="9">
+    <circle cx="340" cy="28" r="3" fill="#00cbe2" /><text x="348" y="31" fill="rgba(255,255,255,0.65)">Band 1</text>
+    <circle cx="340" cy="42" r="3" fill="#2fd4a0" /><text x="348" y="45" fill="rgba(255,255,255,0.65)">Band 2</text>
+    <circle cx="340" cy="56" r="3" fill="#9d4edd" /><text x="348" y="59" fill="rgba(255,255,255,0.65)">Band 3</text>
+    <circle cx="340" cy="70" r="3" fill="#f2c14e" /><text x="348" y="73" fill="rgba(255,255,255,0.65)">Band 4</text>
+    <circle cx="340" cy="84" r="3" fill="#ef6c6c" /><text x="348" y="87" fill="rgba(255,255,255,0.65)">Band 5</text>
+    <circle cx="340" cy="98" r="3" fill="#6c8cef" /><text x="348" y="101" fill="rgba(255,255,255,0.65)">Band 6</text>
+  </g>
+</svg>

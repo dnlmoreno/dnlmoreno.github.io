@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" width="100%" height="100%">
+  <defs>
+    <!-- Deep Space Background Gradient -->
+    <radialGradient id="deepSpace" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#0c0c16" />
+      <stop offset="60%" stop-color="#05060a" />
+      <stop offset="100%" stop-color="#010204" />
+    </radialGradient>
+
+    <!-- Star Glow -->
+    <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="25%" stop-color="#fdba74" stop-opacity="0.8" />
+      <stop offset="70%" stop-color="#ea580c" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="galaxyGrad1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff7ed" />
+      <stop offset="30%" stop-color="#fb923c" stop-opacity="0.85" />
+      <stop offset="70%" stop-color="#c2410c" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="galaxyGrad2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0f9ff" />
+      <stop offset="35%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="75%" stop-color="#0284c7" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- 6-Spike JWST Diffraction Spikes Filter -->
+    <filter id="spikeGlow">
+      <feGaussianBlur stdDeviation="1.2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Deep Cosmos Background -->
+  <rect width="480" height="270" fill="url(#deepSpace)" />
+
+  <!-- Background Dust & Faint Stars -->
+  <g fill="#ffffff" opacity="0.6">
+    <circle cx="34" cy="56" r="0.8" />
+    <circle cx="82" cy="190" r="0.6" />
+    <circle cx="120" cy="40" r="1.1" />
+    <circle cx="160" cy="220" r="0.9" />
+    <circle cx="210" cy="80" r="0.7" />
+    <circle cx="280" cy="30" r="0.8" />
+    <circle cx="340" cy="240" r="1.2" />
+    <circle cx="390" cy="90" r="0.7" />
+    <circle cx="430" cy="180" r="1.0" />
+    <circle cx="460" cy="45" r="0.6" />
+    <circle cx="95" cy="120" r="0.5" />
+    <circle cx="180" cy="160" r="0.7" />
+    <circle cx="310" cy="110" r="0.5" />
+    <circle cx="400" cy="210" r="0.8" />
+  </g>
+
+  <!-- Distant Redshifted Galaxies & Gravitational Lenses -->
+  <ellipse cx="140" cy="150" rx="35" ry="12" fill="url(#galaxyGrad1)" transform="rotate(35 140 150)" />
+  <ellipse cx="360" cy="120" rx="28" ry="10" fill="url(#galaxyGrad1)" transform="rotate(-40 360 120)" />
+  <ellipse cx="310" cy="190" rx="42" ry="14" fill="url(#galaxyGrad2)" transform="rotate(15 310 190)" />
+  <ellipse cx="80" cy="90" rx="20" ry="8" fill="url(#galaxyGrad2)" transform="rotate(-25 80 90)" />
+
+  <!-- Lensed Galaxy Arcs -->
+  <path d="M 215 110 A 35 35 0 0 1 245 95" fill="none" stroke="#f97316" stroke-width="1.8" opacity="0.7" stroke-linecap="round" />
+  <path d="M 230 160 A 40 40 0 0 1 200 175" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.6" stroke-linecap="round" />
+
+  <!-- JWST Bright Star 1 (Center-Left) with characteristic 6-point diffraction spikes -->
+  <g transform="translate(230, 135)" filter="url(#spikeGlow)">
+    <circle cx="0" cy="0" r="22" fill="url(#starGlow)" />
+    <!-- 6 Primary Diffraction Spikes (at 0°, 60°, 120°) -->
+    <line x1="-70" y1="0" x2="70" y2="0" stroke="#ffedd5" stroke-width="0.8" />
+    <line x1="-35" y1="-60.6" x2="35" y2="60.6" stroke="#ffedd5" stroke-width="0.8" />
+    <line x1="-35" y1="60.6" x2="35" y2="-60.6" stroke="#ffedd5" stroke-width="0.8" />
+    <!-- Core -->
+    <circle cx="0" cy="0" r="3.5" fill="#ffffff" />
+  </g>
+
+  <!-- JWST Bright Star 2 (Upper Right) -->
+  <g transform="translate(370, 65)" filter="url(#spikeGlow)">
+    <circle cx="0" cy="0" r="16" fill="url(#starGlow)" />
+    <line x1="-45" y1="0" x2="45" y2="0" stroke="#ffedd5" stroke-width="0.7" />
+    <line x1="-22.5" y1="-39" x2="22.5" y2="39" stroke="#ffedd5" stroke-width="0.7" />
+    <line x1="-22.5" y1="39" x2="22.5" y2="-39" stroke="#ffedd5" stroke-width="0.7" />
+    <circle cx="0" cy="0" r="2.5" fill="#ffffff" />
+  </g>
+
+  <!-- JWST Bright Star 3 (Lower Left) -->
+  <g transform="translate(110, 200)" filter="url(#spikeGlow)">
+    <circle cx="0" cy="0" r="14" fill="url(#starGlow)" />
+    <line x1="-35" y1="0" x2="35" y2="0" stroke="#ffedd5" stroke-width="0.6" />
+    <line x1="-17.5" y1="-30" x2="17.5" y2="30" stroke="#ffedd5" stroke-width="0.6" />
+    <line x1="-17.5" y1="30" x2="17.5" y2="-30" stroke="#ffedd5" stroke-width="0.6" />
+    <circle cx="0" cy="0" r="2" fill="#ffffff" />
+  </g>
+
+  <!-- Metadata Overlay -->
+  <text x="30" y="245" font-family="monospace" font-size="9" fill="#00e5ff" opacity="0.8">JWST NIRCam / NIRSpec // MULTIMODAL</text>
+  <text x="375" y="245" font-family="monospace" font-size="9" fill="#94a3b8" opacity="0.8">z = 0.5 - 9.0</text>
+</svg>
