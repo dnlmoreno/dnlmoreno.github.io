@@ -3,6 +3,7 @@ interface Paper {
   title: string;
   venue: string;
   homeVenue?: string;
+  year?: number;
   status: string;
   description: string;
   data: string[];
@@ -22,6 +23,9 @@ interface Props {
 
 const { paper, useHomeVenue = false } = Astro.props as Props;
 const venueLabel = useHomeVenue ? paper.homeVenue ?? paper.venue : paper.venue;
+// The home page's venueLabel already has the year baked in (e.g. "2025 ICML Workshop - ML4Astro"),
+// so only prepend paper.year here when showing the plain Research-page venue.
+const displayLabel = !useHomeVenue && paper.year ? `${paper.year} - ${venueLabel}` : venueLabel;
 
 const getBadgeClass = (venue: string) => {
   if (venue.includes("ICML")) return "badge-yellow";
@@ -53,7 +57,7 @@ const getBadgeClass = (venue: string) => {
 
   <div class="paper-content">
     <span class={`venue-badge ${getBadgeClass(venueLabel)}`}>
-      {venueLabel}
+      {displayLabel}
     </span>
     <h4 class="paper-title">{paper.title}</h4>
     <p class="paper-desc">{paper.description}</p>
@@ -245,14 +249,11 @@ const getBadgeClass = (venue: string) => {
   }
 
   .paper-desc {
-    font-size: 0.95rem;
+    font-size: 1.08rem;
+    line-height: 1.5;
     color: var(--color-text-muted);
     margin-bottom: 1.5rem;
     flex: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   .paper-chips {
@@ -322,8 +323,7 @@ const getBadgeClass = (venue: string) => {
 
   @media (max-width: 768px) {
     .paper-desc {
-      -webkit-line-clamp: none;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
   }
 </style>

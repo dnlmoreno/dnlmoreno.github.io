@@ -43,7 +43,7 @@ const getBadgeClass = (venue: string) => {
               class="contribution-item glass"
             >
               <span class={`venue-badge ${getBadgeClass(contrib.venue)}`}>
-                {contrib.venue}
+                {contrib.year ? `${contrib.year} - ${contrib.venue}` : contrib.venue}
               </span>
               <h4 class="contrib-title" title={contrib.title}>
                 {contrib.title}
@@ -253,7 +253,7 @@ const getBadgeClass = (venue: string) => {
   .contribution-item {
     display: grid;
     /* Adaptive Column Alignment: Venue Badge -> Title -> Framework Chips -> Action Buttons */
-    grid-template-columns: 120px 1fr auto 100px; /* Slightly reduced column widths */
+    grid-template-columns: 185px 1fr auto 100px; /* Widened venue column to fit "YYYY - Venue" */
     gap: 1.5rem; /* Reduced gap from 3rem */
     align-items: center;
     padding: 1rem 1.5rem; /* Reduced padding from 1.5rem 2rem */
