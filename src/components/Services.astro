@@ -16,7 +16,7 @@
       </div>
 
       <div class="svc-cards-row">
-        <div class="svc-card">
+        <div class="svc-card glass">
           <div class="svc-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path>
@@ -28,7 +28,7 @@
           <div class="svc-card-tags">Data Analytics &middot; MLOps &middot; State of the Art</div>
         </div>
 
-        <div class="svc-card">
+        <div class="svc-card glass">
           <div class="svc-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -40,7 +40,7 @@
           <div class="svc-card-tags">RAG &middot; AI Assistants &middot; Workflow Automation</div>
         </div>
 
-        <div class="svc-card">
+        <div class="svc-card glass">
           <div class="svc-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="16 18 22 12 16 6"></polyline>
@@ -54,6 +54,8 @@
       </div>
     </div>
 
+    <div class="section-divider"></div>
+
     <!-- Selected Work: case study -->
     <div class="work-section fade-in">
       <div class="section-tag">// SELECTED WORK</div>
@@ -62,7 +64,7 @@
         href="https://masespacio.vercel.app/"
         target="_blank"
         rel="noopener noreferrer"
-        class="work-card"
+        class="work-card glass"
       >
         <div class="work-image">
           <img
@@ -195,15 +197,13 @@
     display: flex;
     flex-direction: column;
     padding: 1.3rem 1.4rem;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 229, 255, 0.18);
-    background: rgba(0, 229, 255, 0.025);
-    transition: border-color 0.25s ease, background 0.25s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   .svc-card:hover {
+    transform: translateY(-5px);
     border-color: rgba(0, 229, 255, 0.4);
-    background: rgba(0, 229, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
   }
 
   .svc-card-icon {
@@ -250,6 +250,11 @@
     color: var(--color-accent);
   }
 
+  .section-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 2.5rem;
+  }
+
   /* Selected Work */
   .work-section .section-tag {
     font-size: 1.15rem;
@@ -265,9 +270,6 @@
     align-items: stretch;
     margin-top: 1.4rem;
     padding: 1.6rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.015);
     text-decoration: none;
     cursor: pointer;
     transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
@@ -367,12 +369,13 @@
 
   .svc-cta-photo {
     position: absolute;
-    bottom: -95%;
-    right: -9rem;
-    width: 560px;
+    top: 50%;
+    right: -3rem;
+    transform: translateY(-50%);
+    width: 420px;
     height: auto;
     max-width: none;
-    opacity: 0.5;
+    opacity: 0.6;
     pointer-events: none;
     z-index: 1;
     -webkit-mask-image: linear-gradient(to left, #000 20%, transparent 70%);
@@ -439,6 +442,7 @@
     padding: 0.75rem 1.4rem;
     text-decoration: none;
     transition: all 0.25s ease;
+    margin-right: 4rem;
   }
 
   .svc-cta-btn:hover {
@@ -491,6 +495,7 @@
     }
     .svc-cta-btn {
       margin-left: 0;
+      margin-right: 0;
     }
   }
 </style>
